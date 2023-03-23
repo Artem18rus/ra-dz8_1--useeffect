@@ -1,4 +1,3 @@
-// import React from "react";
 import React from "react";
 import { useEffect } from "react";
 import { useState } from "react";
@@ -8,30 +7,31 @@ function Details({ info }) {
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    try {
+    const fetchData = async () => {
       setLoading(true);
-      console.log(loading);
-      const fetchApiDetails = () =>
-        fetch(
+      try {
+        const response = await fetch(
           `https://raw.githubusercontent.com/netology-code/ra16-homeworks/master/hooks-context/use-effect/data/${info.id}.json`
         );
 
-      fetchApiDetails()
-        .then((response) => response.json())
-        .then((response) => {
-          setDetail(response);
-        });
-    } finally {
-      setLoading(false);
-    }
+        if (!response.ok) {
+          throw new Error("");
+        }
+        const data = await response.json();
+        setDetail(data);
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchData();
   }, [info]);
 
   if (detail.length === 0) return;
 
   return (
     <>
-      {loading && <p>Loading...</p>}
       <div className="details">
+        {loading && <p>Loading...</p>}
         <img
           className="banner"
           src={detail.avatar}
