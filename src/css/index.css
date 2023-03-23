@@ -1,0 +1,52 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Mina", sans-serif;
+}
+
+.container {
+  display: flex;
+  list-style-type: none;
+
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.container-result {
+  display: flex;
+  justify-content: center;
+  column-gap: 30px;
+}
+
+.list {
+  list-style-type: none;
+  border: 1px solid gray;
+}
+
+li {
+}
+
+.list-item {
+  padding: 10px;
+  border: 1px solid gray;
+  cursor: pointer;
+}
+
+.list-item-color {
+  background: blue;
+  color: white;
+}
+
+.details {
+}
+
+.name {
+  padding: 10px 0;
+}
+p {
+  font-size: 35px;
+}
